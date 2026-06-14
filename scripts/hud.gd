@@ -560,19 +560,13 @@ func get_nearest_trapped_animal(player_pos: Vector2) -> Node2D:
 	var fish_nodes = get_tree().get_nodes_in_group("fish")
 	for fish in fish_nodes:
 		if is_instance_valid(fish) and fish.get("is_trapped") == true and fish.get("is_perishing") == false:
-			# Only show indicator once the animal enters the active level area (0 to 1600) and has entered the screen
-			if fish.global_position.x >= 0.0 and fish.global_position.x <= 1600.0:
-				if fish.get("has_entered_screen") == true:
-					trapped_animals.append(fish)
+			trapped_animals.append(fish)
 			
 	# Find trapped turtles
 	var turtle_nodes = get_tree().get_nodes_in_group("turtles")
 	for turtle in turtle_nodes:
 		if is_instance_valid(turtle) and turtle.get("is_trapped") == true and turtle.get("is_perishing") == false:
-			# Only show indicator once the animal enters the active level area (0 to 1600) and has entered the screen
-			if turtle.global_position.x >= 0.0 and turtle.global_position.x <= 1600.0:
-				if turtle.get("has_entered_screen") == true:
-					trapped_animals.append(turtle)
+			trapped_animals.append(turtle)
 			
 	if trapped_animals.is_empty():
 		return null
