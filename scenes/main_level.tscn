@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_level_gd"]
+[ext_resource type="PackedScene" path="res://scenes/OceanBackground.tscn" id="2_ocean_bg"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" path="res://scenes/plastic_bottle.tscn" id="5_plastic_bottle"]
+[ext_resource type="PackedScene" path="res://scenes/moving_fish.tscn" id="7_moving_fish"]
+[ext_resource type="PackedScene" path="res://scenes/moving_fish_group.tscn" id="8_moving_fish_group"]
+[ext_resource type="PackedScene" path="res://scenes/moving_turtle.tscn" id="9_moving_turtle"]
+[ext_resource type="PackedScene" path="res://scenes/plastic_bag.tscn" id="10_plastic_bag"]
+
+[node name="MainLevel" type="Node2D"]
+script = ExtResource("1_level_gd")
+ocean_state = "polluted"
+spawn_types = [ExtResource("5_plastic_bottle"), ExtResource("10_plastic_bag")]
+max_items_on_screen = 10
+spawn_interval_min = 2.0
+spawn_interval_max = 3.0
+
+[node name="OceanBackground" parent="." instance=ExtResource("2_ocean_bg")]
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+position = Vector2(200, 450)
+
+[node name="HUD" parent="." instance=ExtResource("4_hud")]
+
+[node name="MovingFish1" parent="." instance=ExtResource("7_moving_fish")]
+position = Vector2(1000, 200)
+
+[node name="MovingFish2" parent="." instance=ExtResource("7_moving_fish")]
+position = Vector2(1200, 700)
+speed = 120.0
+
+[node name="MovingFish3" parent="." instance=ExtResource("7_moving_fish")]
+position = Vector2(1500, 350)
+speed = 100.0
+
+[node name="MovingFish4" parent="." instance=ExtResource("7_moving_fish")]
+position = Vector2(800, 500)
+speed = 90.0
+
+[node name="MovingFishGroup1" parent="." instance=ExtResource("8_moving_fish_group")]
+position = Vector2(100, 250)
+
+[node name="MovingFishGroup2" parent="." instance=ExtResource("8_moving_fish_group")]
+position = Vector2(400, 550)
+speed = 70.0
+
+[node name="MovingTurtle1" parent="." instance=ExtResource("9_moving_turtle")]
+position = Vector2(1500, 600)
+speed = 40.0

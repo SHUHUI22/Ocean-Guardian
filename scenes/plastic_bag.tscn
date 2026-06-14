@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_bag_script"]
+[ext_resource type="Texture2D" path="res://assets/plastic_bag.png" id="2_bag_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 45.0
+
+[node name="PlasticBag" type="Area2D"]
+scale = Vector2(0.12, 0.12)
+collision_layer = 2
+script = ExtResource("1_bag_script")
+is_plastic_bag = true
+is_drifting = true
+drift_speed = 25.0
+bob_amplitude = 18.0
+bob_frequency = 0.9
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bag_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/rescue_net.gd" id="1_net_script"]
+[ext_resource type="Texture2D" path="res://assets/net.png" id="2_net_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 36.0
+
+[node name="RescueNet" type="Area2D"]
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("1_net_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_net_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")

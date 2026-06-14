@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cx60e52vw374"]
+
+[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_how_to_play_gd"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_how_to_play_gd")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0431373, 0.14902, 0.254902, 1)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -310.0
+offset_right = 500.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ScrollVBox" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="ObjectiveHeader" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.156863, 1)
+theme_override_font_sizes/font_size = 24
+text = "Objective"
+
+[node name="ObjectiveText" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Dive into the ocean for a 90-second. Clean up trash and rescue trapped marine creatures to restore ocean health. Avoid running out of oxygen!"
+autowrap_mode = 2
+
+[node name="GameplayHeader" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.156863, 1)
+theme_override_font_sizes/font_size = 24
+text = "Cleanup & Rescues"
+
+[node name="GameplayText" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "• Clean Trash: Swim into plastic bottles or bags to collect them.
+• Rescue Marine Life: Swim into nets trapping fish or turtles to free them. Trapped animals perish after 15 seconds if ignored, harming ocean ecosystem.
+• Ghost Nets: If entangled, you will be slowed down and lose oxygen until you struggle free and collect them (takes 2 seconds)."
+autowrap_mode = 2
+
+[node name="DiveHeader" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.156863, 1)
+theme_override_font_sizes/font_size = 24
+text = "Oxygen & Ocean Health"
+
+[node name="DiveText" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "• Oxygen Level: Consumed continuously. Swim up to the surface to quickly refill.
+• Ocean Health: Leftover pollution and trapped fish/turtles slowly decay the ecosystem."
+autowrap_mode = 2
+
+[node name="ControlsHeader" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.156863, 1)
+theme_override_font_sizes/font_size = 24
+text = "Controls & UI Navigation"
+
+[node name="ControlsText" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "• Movement: Drag the Virtual Joystick (mobile) or use WASD / Arrow Keys (PC).
+• Pause Game: Press the Pause button (Pause) on the left side of the screen or press Escape on keyboard.
+• Rescue Pointer: A glowing red arrow rotates around your character, pointing directly to the nearest trapped animal."
+autowrap_mode = 2
+
+[node name="AwarenessHeader" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.784314, 0.156863, 1)
+theme_override_font_sizes/font_size = 24
+text = "Awareness thought bubbles"
+
+[node name="AwarenessText" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ScrollVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "• Fact Bubbles: Collecting trash or freeing animals releases thought bubbles. Read them to learn real environmental facts!
+• Effort Evaluation: At the end of the dive, you will receive a scorecard rating your effort (Low, Moderate, High) and describing your contribution to the ocean habitat."
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Back to Menu"

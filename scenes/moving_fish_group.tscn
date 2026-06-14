@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/grouped_fish.png" id="1_group_texture"]
+[ext_resource type="Script" path="res://scripts/moving_fish_group.gd" id="2_group_script"]
+
+[node name="MovingFishGroup" type="Sprite2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_group_texture")
+script = ExtResource("2_group_script")

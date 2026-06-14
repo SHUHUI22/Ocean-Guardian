@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_fish_script"]
+[ext_resource type="Texture2D" path="res://assets/injured_fish.png" id="2_fish_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 45.0
+
+[node name="TrappedFish" type="Area2D"]
+scale = Vector2(0.12, 0.12)
+collision_layer = 2
+script = ExtResource("1_fish_script")
+type = 1
+score_value = 20
+custom_fact_message = "Sea animals mistake plastic for food and can choke or starve."
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fish_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
