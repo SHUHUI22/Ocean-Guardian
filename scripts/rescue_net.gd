@@ -141,9 +141,10 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	# Trap fish if we don't have one trapped yet and it is a fish
 	if trapped_fish == null and area.is_in_group("fish"):
-		trapped_fish = area
 		if area.has_method("get_trapped"):
-			area.get_trapped(self)
+			var success = area.get_trapped(self)
+			if success:
+				trapped_fish = area
 
 func _on_body_entered(body: Node2D) -> void:
 	# If the player touches the net, check if we have a trapped fish to rescue

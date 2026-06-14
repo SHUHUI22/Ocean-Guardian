@@ -137,9 +137,9 @@ func _process(delta: float) -> void:
 				has_entered_screen = false
 
 # Called by the net when it traps the fish
-func get_trapped(net: Node2D) -> void:
-	if is_escaping or is_moving_right or is_perishing:
-		return
+func get_trapped(net: Node2D) -> bool:
+	if is_escaping or is_moving_right or is_perishing or is_trapped:
+		return false
 	is_trapped = true
 	net_ref = net
 	
@@ -152,6 +152,7 @@ func get_trapped(net: Node2D) -> void:
 		$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.flip_h = false # Reset orientation in net
+	return true
 
 # Called when the player rescues the fish by touching the net
 func free_from_net() -> void:
@@ -178,7 +179,6 @@ func free_from_net() -> void:
 func perish() -> void:
 	is_perishing = true
 	rotation = PI
-	if is_injured:
-		$Sprite2D.texture = load("res://assets/injured_fish.png")
+	$Sprite2D.texture = load("res://assets/injured_fish.png")
 	# Modulate the sprite grey
 	$Sprite2D.modulate = Color(0.35, 0.35, 0.35, 1.0)

@@ -252,6 +252,11 @@ func spawn_initial_items() -> void:
 							if "is_injured" in fish_instance:
 								fish_instance.set("is_injured", true)
 							spawned_items_container.add_child(fish_instance)
+							# Explicitly link them immediately to bypass delayed collision detection
+							if fish_instance.has_method("get_trapped"):
+								var success = fish_instance.get_trapped(instance)
+								if success:
+									instance.trapped_fish = fish_instance
 
 func _process(delta: float) -> void:
 	# Passive health drain based on active pollution on screen and track dive time
@@ -460,6 +465,11 @@ func spawn_item() -> void:
 								if "is_drifting" in fish_instance:
 									fish_instance.set("is_drifting", false)
 							spawned_items_container.add_child(fish_instance)
+							# Explicitly link them immediately to bypass delayed collision detection
+							if fish_instance.has_method("get_trapped"):
+								var success = fish_instance.get_trapped(instance)
+								if success:
+									instance.trapped_fish = fish_instance
 
 func trigger_pollution_surge() -> void:
 	is_pollution_surge = true
