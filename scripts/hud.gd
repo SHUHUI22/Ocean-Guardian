@@ -495,18 +495,18 @@ func _process(delta: float) -> void:
 			nearest_animal = get_nearest_trapped_animal(player.global_position)
 			
 		if is_instance_valid(player) and is_instance_valid(nearest_animal):
-			var player_screen_pos = player.get_global_transform_with_canvas().origin
-			var animal_screen_pos = nearest_animal.get_global_transform_with_canvas().origin
+			var canvas_transform = player.get_canvas_transform()
+			var player_canvas_pos = canvas_transform * player.global_position
+			var animal_canvas_pos = canvas_transform * nearest_animal.global_position
 			
-			var direction = (nearest_animal.global_position - player.global_position).normalized()
+			var direction = (animal_canvas_pos - player_canvas_pos).normalized()
 			
 			# Orbit the player at 70 pixels (offset by 15 pixels to align the 30x30 pivot center)
-			rescue_indicator.global_position = player_screen_pos + direction * 70.0 - Vector2(15, 15)
+			rescue_indicator.position = player_canvas_pos + direction * 70.0 - Vector2(15, 15)
 			rescue_indicator.rotation = direction.angle()
 			
-			# Check visibility bounds and distance
-			var viewport_rect = get_viewport().get_visible_rect()
-			var is_on_screen = viewport_rect.has_point(animal_screen_pos)
+			# Check visibility bounds in canvas design resolution (1280x720) and distance
+			var is_on_screen = Rect2(Vector2.ZERO, Vector2(1280, 720)).has_point(animal_canvas_pos)
 			var dist_to_player = player.global_position.distance_to(nearest_animal.global_position)
 			
 			if is_on_screen and dist_to_player < RESCUE_HIDE_DISTANCE:
