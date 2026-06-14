@@ -248,3 +248,6 @@ func rescue() -> void:
 func _exit_tree() -> void:
 	if is_instance_valid(player_inside):
 		player_inside.restore_speed()
+	if is_instance_valid(trapped_fish) and not is_rescuing and not is_perishing:
+		if trapped_fish.has_method("free_from_net"):
+			trapped_fish.free_from_net()

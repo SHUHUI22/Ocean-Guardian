@@ -55,9 +55,18 @@ func _process(delta: float) -> void:
 			
 			# Struggle rotation wiggle: rotate back and forth smoothly
 			rotation = sin(Time.get_ticks_msec() * wiggle_speed) * (0.35 if is_near else 0.20)
-		# Slowly drain health when trapped
-		GameManager.adjust_ocean_health(-1.0 * delta)
-		return
+			# Slowly drain health when trapped
+			GameManager.adjust_ocean_health(-1.0 * delta)
+			return
+		else:
+			# Safety fallback: if the net is destroyed but the fish was not freed,
+			# free it now so it doesn't get stuck!
+			is_trapped = false
+			is_escaping = true
+			is_moving_right = true
+			escape_time = 0.0
+			rotation = 0.0
+			$Sprite2D.flip_h = true
 		
 	if is_escaping:
 		# Escape animation: swim away fast to the right with a rapid tail-flap wiggle
